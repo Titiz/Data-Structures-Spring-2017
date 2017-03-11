@@ -13,7 +13,7 @@ class Node
 int requestInteger()
 {
     int input;
-    std::cout << "Please enter a number: \n";
+    std::cout << "Please enter a number (0 to finish input): \n";
     cin >> input;
     return input;
 };
@@ -32,18 +32,18 @@ Node *createList()
     //Loop through the creation of nodes.
     while (true)
     {
-	input = requestInteger();
-	if (input == 0)
-	{
-	    break;
-	}
-	// create the next node using the user input
-	Node *newNode = new Node();
-	newNode->data = input;
-	// set the next of the previous node to the newly created node.
-	previousNode->next = newNode;
-	// set the newNode to the previous node to continue the loop.
-	previousNode = newNode;
+        input = requestInteger();
+        if (input == 0)
+        {
+            break;
+        }
+        // create the next node using the user input
+        Node *newNode = new Node();
+        newNode->data = input;
+        // set the next of the previous node to the newly created node.
+        previousNode->next = newNode;
+        // set the newNode to the previous node to continue the loop.
+        previousNode = newNode;
     }
     // set the last node's pointer to null
     previousNode->next = NULL;
@@ -57,8 +57,8 @@ void printList(Node *startingNode)
     Node *nextNode = startingNode->next;
     while (nextNode)
     {
-	cout << nextNode->data << " ";
-	nextNode = nextNode->next;
+        cout << nextNode->data << " ";
+        nextNode = nextNode->next;
     }
     cout << endl;
 }
@@ -67,7 +67,7 @@ Node *Last(Node &startingNode)
 {
     Node *nextNode = startingNode.next;
     while (nextNode->next)
-	nextNode = nextNode->next;
+        nextNode = nextNode->next;
     return nextNode;
 }
 
@@ -75,27 +75,18 @@ Node *LastBefore(Node *startingNode, Node *endingNode)
 {
     if (startingNode != endingNode)
     {
-	Node *nextNode = startingNode->next;
-	while (nextNode->next != endingNode)
-	{
-	    nextNode = nextNode->next;
-	}
-	return nextNode;
+        Node *nextNode = startingNode->next;
+        while (nextNode->next != endingNode)
+        {
+            nextNode = nextNode->next;
+        }
+        return nextNode;
     }
     else
     {
-	return startingNode;
+        return startingNode;
     }
 }
-
-//void shiftValuesRight(Node& startingNode) {
-//	Node* nextNode = startingNode.next;
-//	while (nextNode->next) {
-//		nextNode->next->data = nextNode->data;
-//		nextNode = nextNode->next;
-//	}
-//	startingNode.data = nextNode->data;
-//}
 
 void swap(Node *i, Node *j)
 {
@@ -112,19 +103,19 @@ Node *Reverse(Node &startingNode)
     Node *j = lastNode;
     while (true)
     {
-	// switch values of last and first node.
-	swap(i, j);
+        // switch values of last and first node.
+        swap(i, j);
 
-	j = LastBefore(i, j);
-	i = i->next;
+        j = LastBefore(i, j);
+        i = i->next;
 
-	if (i->next == j)
-	{
-	    swap(i, j);
-	    break;
-	}
-	else if (i == j)
-	    break;
+        if (i->next == j)
+        {
+            swap(i, j);
+            break;
+        }
+        else if (i == j)
+            break;
     }
     return lastNode;
 }
