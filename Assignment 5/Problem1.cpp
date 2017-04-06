@@ -20,7 +20,7 @@ class BST
     int getDepth(Node<T> *node);                     // used for the depth function
     void preorder(Node<T> *node);                    // used for the printPreorderfunction
     Node<T> *min(Node<T> *root);                     // finds the minimum in subtree
-    Node<T> *root;                                   // useful to have a reference to the root of the tree.
+    Node<T> *root = NULL;                            // useful to have a reference to the root of the tree.
   public:
     BST();
     ~BST();
